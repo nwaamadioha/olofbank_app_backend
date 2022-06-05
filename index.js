@@ -12,6 +12,8 @@ import contactRoute from "./routes/contact.js"
 dotenv.config();
 const app = express();
 
+const port = process.env.PORT || 5000;
+
 //DATABASE CONNECTION
 const connect = async () => {
     try {
@@ -48,10 +50,7 @@ app.use((err, req, res, next) => {
 
 
 
-
-
-
-app.listen(5000, function(){
+app.listen(port, function(){
     connect();
-    console.log("Server started on Port 5000");
+    console.log(`Server started on Port ${port}`);
 })
