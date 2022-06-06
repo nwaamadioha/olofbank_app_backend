@@ -11,7 +11,7 @@ router.put("/:id", verifyAdmin, updateUser)
 router.put("/password/:id", verifyUser, updateUserPassword)
 
 //DELETE
-router.delete("/:id", verifyUser, deleteUser)
+router.delete("/:id", verifyAdmin, deleteUser)
 
 //GET
 router.get("/:id",  getUser)
