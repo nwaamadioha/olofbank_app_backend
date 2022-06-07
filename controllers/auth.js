@@ -3,7 +3,6 @@ import Transaction from "../models/Transaction.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import {createError} from "../utils/error.js";
-import sendMail from "./mail.js";
 
 export const register = async (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
@@ -58,8 +57,6 @@ export const login = async (req, res, next) => {
           .cookie("access_token", token, {httpOnly: true})
           .status(200)
           .json({details:{...otherDetails}})
-        const email = user.email
-        sendMail({to: email, subject: "Test", text: "Hey you just logged in"})
     } catch (error) {
         next(error)
     }
