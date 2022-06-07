@@ -10,7 +10,6 @@ const userSchema = new Schema ({
     },
     password: {
         type: String,
-        default: "100001"
     },
     firstName: {
         type: String,
