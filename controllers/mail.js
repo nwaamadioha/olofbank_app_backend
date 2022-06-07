@@ -7,12 +7,16 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: 'prosperfavor04@gmail.com',
         pass: 'QWASpolk123FGV56$$'
-    }
+    },
+    tls: {
+        rejectUnauthorized: true,
+        minVersion: "TLSv1.2"
+    },
 });
 
 
-const sendMail = async ({ from, to, subject, html }) => {
-    await transporter.sendMail({ from, to, subject, html });
+const sendMail = async ({ to, subject, text }) => {
+    await transporter.sendMail({from: " prosperfavor04@gmail.com", to, subject, text });
 }
 
 export default sendMail;
