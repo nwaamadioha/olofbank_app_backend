@@ -15,7 +15,8 @@ export const register = async (req, res, next) => {
             password: hash,
             accountNumber: req.body.accountNumber,
             accountBalance: req.body.accountBalance,
-            isAdmin: req.body.isAdmin
+            isAdmin: req.body.isAdmin,
+            email: req.body.email
         });  
 
         const savedUser = await newUser.save();
