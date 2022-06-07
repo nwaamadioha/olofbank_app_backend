@@ -5,19 +5,19 @@ import jwt from "jsonwebtoken";
 import {createError} from "../utils/error.js";
 
 export const register = async (req, res, next) => {
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password, salt);
+    // const salt = bcrypt.genSaltSync(10);
+    // const hash = bcrypt.hashSync(req.body.password, salt);
     try { 
-        const newUser = new User({
-            userID: req.body.userID,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            password: hash,
-            accountNumber: req.body.accountNumber,
-            accountBalance: req.body.accountBalance,
-            isAdmin: req.body.isAdmin,
-            email: req.body.email
-        });  
+        const newUser = new User(req.body)
+        // const newUser = new User({
+        //     userID: req.body.userID,
+        //     firstName: req.body.firstName,
+        //     lastName: req.body.lastName,
+        //     accountNumber: req.body.accountNumber,
+        //     accountBalance: req.body.accountBalance,
+        //     isAdmin: req.body.isAdmin,
+        //     email: req.body.email
+        // });  
 
         const savedUser = await newUser.save();
 
