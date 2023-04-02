@@ -1,5 +1,5 @@
 import User from "../models/User.js"
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 
 export const updateUser = async (req, res, next) => {
     try {
@@ -13,10 +13,10 @@ export const updateUser = async (req, res, next) => {
 }
 
 export const updateUserPassword = async (req, res, next) => {
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password, salt);
+    const saltRounds = 10;
+    const hashed = await bcrypt.hash(req.body.password, saltRounds);    
     try {
-        await User.findByIdAndUpdate(req.params.id, {$set: {password: hash}}, {new:true} );
+        await User.findByIdAndUpdate(req.params.id, {$set: {password: hashed}}, {new:true} );
         res.status(200).send("Password Updated Successfully")
     } catch (error) {
         next(error)

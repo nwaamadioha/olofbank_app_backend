@@ -12,7 +12,7 @@ import contactRoute from "./routes/contact.js"
 dotenv.config();
 const app = express();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3500;
 
 //DATABASE CONNECTION
 const connect = async () => {
